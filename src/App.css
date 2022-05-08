@@ -25,10 +25,41 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  border: 1px solid black;
 }
 
-.App .maze-container .maze li p{
+.App .maze-container .maze li {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.App .maze-container .maze li:first-child {
+  border-top: 1px solid black;
+}
+
+.App .maze-container .maze li p {
   display: inline;
-  padding: 10px;
+  height: 100%;
+  padding: 20px;
+  font-size: 0;
+  border-left: 1px solid black;
+}
+
+.App .maze-container .maze li p:last-child {
+  border-right: 1px solid black;
+}
+
+.config0 {
+  background-color: black;
+}
+
+.config1 {
+  background-color: white;
+}
+
+.config2 {
+  background-color: orange;
+}
+
+.config3 {
+  background-color: green;
 }
