@@ -18,7 +18,6 @@ function App() {
         newMaze[i].push(1)
       }
     }
-
     setMaze(newMaze)
   }
 
@@ -41,6 +40,14 @@ function App() {
     }
   }
 
+  const handleClear = () => {
+    setMaze(maze.map(x => {
+      return x.map(y => {
+        return 1
+      })
+    }))
+  }
+
   return (
     <div className="App">
       {maze.length !== 0 ?
@@ -52,6 +59,9 @@ function App() {
               <option value="start">Start</option>
               <option value="finish">Finish</option>
             </select>
+            <button onClick={() => handleClear()}>
+              Clear
+            </button>
           </div>
           <ul className="maze">
             {maze.map(x => (
