@@ -5,6 +5,22 @@
   align-items: center;
 }
 
+.App .maze-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.App .maze-container .maze-config {
+  padding: 10px;
+}
+
+.App .maze-container .maze-config select {
+  padding: 5px;
+  width: 10vw;
+  text-align: center;
+  font-size: 20px;
+}
+
 .App .maze-container .maze {
   list-style: none;
   padding: 0;
