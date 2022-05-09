@@ -30,6 +30,7 @@
 .App .maze-container .maze li {
   display: flex;
   border-bottom: 1px solid black;
+  cursor: pointer;
 }
 
 .App .maze-container .maze li:first-child {
@@ -42,10 +43,15 @@
   padding: 20px;
   font-size: 0;
   border-left: 1px solid black;
+
 }
 
 .App .maze-container .maze li p:last-child {
   border-right: 1px solid black;
+}
+
+.App .maze-container .maze li p:active {
+
 }
 
 .config0 {

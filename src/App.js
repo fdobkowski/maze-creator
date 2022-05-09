@@ -63,13 +63,17 @@ function App() {
               Clear
             </button>
           </div>
-          <ul className="maze">
+          <ul id="maze" className="maze">
             {maze.map(x => (
                 <li key={maze.indexOf(x)}>
                   {x.map((y, ind) => (
                       <p key={(maze.indexOf(x) + 1) * ind} className={`config${y}`}
                          onClick={() => handleFieldChange(maze.indexOf(x), ind)}
-                         onDragEnterCapture={() => handleFieldChange(maze.indexOf(x), ind)}>
+                         onDragEnterCapture={() => handleFieldChange(maze.indexOf(x), ind)}
+                         onDragStart={(e) => {
+                           e.dataTransfer.setDragImage(new Image(), 0, 0)
+                         }}
+                         draggable={true}>
                         {y}
                       </p>
                   ))}
