@@ -7,6 +7,19 @@ function App() {
 
   const [maze, setMaze] = useState([])
   const [config, setConfig] = useState("path")
+  const [border, setBorder] = useState("borderOn")
+  const [checked, setChecked] = useState(true)
+
+  useEffect(() => {
+    switch (checked) {
+      case true:
+        setBorder("borderOn")
+            return
+      case false:
+        setBorder("borderOff")
+            return
+    }
+  }, [checked])
 
   const handleSetter = (values) => {
     const newMaze = []
@@ -42,10 +55,18 @@ function App() {
 
   const handleClear = () => {
     setMaze(maze.map(x => {
-      return x.map(y => {
+      return x.map(() => {
         return 1
       })
     }))
+  }
+
+  const handleArray = () => {
+    const data = JSON.stringify(maze)
+    const newWindow = window.open()
+    newWindow.document.open()
+    newWindow.document.write('<html lang=""><body><pre>' + data + '</pre></body></html>')
+    newWindow.document.close()
   }
 
   return (
@@ -62,10 +83,14 @@ function App() {
             <button onClick={() => handleClear()}>
               Clear
             </button>
+            <div>
+              <input type="checkbox" onChange={() => setChecked(!checked)} defaultChecked={true}/>
+              Show borders
+            </div>
           </div>
-          <ul id="maze" className="maze">
+          <ul className="maze">
             {maze.map(x => (
-                <li key={maze.indexOf(x)}>
+                <li key={maze.indexOf(x)} className={border}>
                   {x.map((y, ind) => (
                       <p key={(maze.indexOf(x) + 1) * ind} className={`config${y}`}
                          onClick={() => handleFieldChange(maze.indexOf(x), ind)}
@@ -80,6 +105,9 @@ function App() {
                 </li>
             ))}
           </ul>
+          <button onClick={() => handleArray()}>
+            Get array
+          </button>
         </div> :
         <Formik className="size-setter" initialValues={{
           sizeX: 0,
