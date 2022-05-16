@@ -1,13 +1,9 @@
 .App .maze-container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.App .maze-container {
-  display: flex;
-  flex-direction: column;
 }
 
 .App .maze-container .maze-config {
@@ -29,7 +25,6 @@
 
 .App .maze-container .maze li {
   display: flex;
-  border-bottom: 1px solid black;
   cursor: pointer;
 }
 
@@ -37,21 +32,23 @@
   border-top: 1px solid black;
 }
 
+.App .maze-container .maze li:last-child {
+  border-bottom: 1px solid black;
+}
+
 .App .maze-container .maze li p {
   display: inline;
   height: 100%;
   padding: 20px;
   font-size: 0;
-  border-left: 1px solid black;
+}
 
+.App .maze-container .maze li p:first-child {
+  border-left: 1px solid black;
 }
 
 .App .maze-container .maze li p:last-child {
   border-right: 1px solid black;
-}
-
-.App .maze-container .maze li p:active {
-
 }
 
 .config0 {
@@ -68,4 +65,21 @@
 
 .config3 {
   background-color: green;
+}
+
+.borderOn:first-child {
+  border-top: 1px solid black;
+}
+
+.borderOn p {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.borderOn p:last-child {
+  border-right: 1px solid black;
+}
+
+.borderOn:last-child p {
+  border-bottom: none;
 }
