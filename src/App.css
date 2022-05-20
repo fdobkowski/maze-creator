@@ -71,13 +71,26 @@
   border-top: 1px solid black;
 }
 
+.borderOff:first-child {
+  border-top: 1px solid transparent;
+}
+
 .borderOn p {
   border-left: 1px solid black;
   border-bottom: 1px solid black;
 }
 
+.borderOff p {
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
 .borderOn p:last-child {
-  border-right: 1px solid black;
+  border-right: 1px solid transparent;
+}
+
+.borderOff p:last-child {
+  border-right: 1px solid transparent;
 }
 
 .borderOn:last-child p {
