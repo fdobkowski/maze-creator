@@ -2,6 +2,7 @@ import './App.css';
 import {useEffect, useState} from "react";
 import { Formik, Form, Field } from "formik";
 import { mazeElementChange } from "./utils/mazeElementChange";
+import { changeCorners } from "./utils/changeCorners";
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
   const [config, setConfig] = useState("path")
   const [border, setBorder] = useState("borderOn")
   const [checked, setChecked] = useState(true)
+  const [corners, setCorners] = useState(false)
 
   useEffect(() => {
     switch (checked) {
@@ -20,6 +22,17 @@ function App() {
             return
     }
   }, [checked])
+
+  useEffect(() => {
+    switch (corners) {
+      case true:
+        setMaze(changeCorners(maze, true))
+            return
+      case false:
+        setMaze(changeCorners(maze, false))
+            return
+    }
+  }, [corners])
 
   const handleSetter = (values) => {
     const newMaze = []
@@ -59,6 +72,9 @@ function App() {
         return 1
       })
     }))
+
+    setCorners(false)
+    window.document.getElementById("cornerCheck").checked = false
   }
 
   const handleArray = () => {
@@ -84,8 +100,14 @@ function App() {
               Clear
             </button>
             <div>
-              <input type="checkbox" onChange={() => setChecked(!checked)} defaultChecked={true}/>
-              Show borders
+              <div>
+                <input type="checkbox" onChange={() => setChecked(!checked)} defaultChecked={true}/>
+                Show borders
+              </div>
+              <div>
+                <input type="checkbox" id={"cornerCheck"} onChange={() => setCorners(!corners)} defaultChecked={false}/>
+                Fill corners
+              </div>
             </div>
           </div>
           <ul className="maze">
