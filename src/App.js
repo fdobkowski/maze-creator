@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import { Formik, Form, Field } from "formik";
 import { mazeElementChange } from "./utils/mazeElementChange";
 import { changeCorners } from "./utils/changeCorners";
+import {drawSvg} from "./utils/MazeImage/drawSvg";
 
 function App() {
 
@@ -85,6 +86,10 @@ function App() {
     newWindow.document.close()
   }
 
+  const handleImage = () => {
+    drawSvg(maze)
+  }
+
   return (
     <div className="App">
       {maze.length !== 0 ?
@@ -129,6 +134,9 @@ function App() {
           </ul>
           <button onClick={() => handleArray()}>
             Get array
+          </button>
+          <button onClick={() => handleImage()}>
+            Get Image
           </button>
         </div> :
         <Formik className="size-setter" initialValues={{
