@@ -136,7 +136,7 @@ function App() {
             Get array
           </button>
           <button onClick={() => handleImage()}>
-            Get Image
+            Download PNG
           </button>
         </div> :
         <Formik className="size-setter" initialValues={{
