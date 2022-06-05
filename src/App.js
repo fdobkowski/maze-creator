@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import {useEffect, useState} from "react";
 import { Formik, Form, Field } from "formik";
 import { mazeElementChange } from "./utils/mazeElementChange";
@@ -8,10 +8,17 @@ import {drawSvg} from "./utils/MazeImage/drawSvg";
 function App() {
 
   const [maze, setMaze] = useState([])
-  const [config, setConfig] = useState("path")
+  const [config, setConfig] = useState("wall")
   const [border, setBorder] = useState("borderOn")
   const [checked, setChecked] = useState(true)
   const [corners, setCorners] = useState(false)
+
+  const yup = require("yup")
+
+  const schema = yup.object().shape({
+    sizeX: yup.number().typeError("Enter a number").integer("Enter an integer").moreThan(1, "Min: 1").lessThan(21, "Max: 20").required("Required"),
+    sizeY: yup.number().typeError("Enter a number").integer("Enter an integer").moreThan(1, "Min: 1").lessThan(21, "Max: 20").required("Required")
+  })
 
   useEffect(() => {
     switch (checked) {
@@ -95,23 +102,24 @@ function App() {
       {maze.length !== 0 ?
         <div className="maze-container">
           <div className="maze-config">
-            <select onChange={(event) => setConfig(event.target.value)}>
+            <select onChange={(event) => setConfig(event.target.value)} defaultValue={"wall"}>
               <option value="path">Path</option>
               <option value="wall">Wall</option>
               <option value="start">Start</option>
               <option value="finish">Finish</option>
             </select>
-            <button onClick={() => handleClear()}>
-              Clear
+            <button className={"config_button"} onClick={() => handleClear()}>
+              Clear maze
             </button>
             <div>
               <div>
-                <input type="checkbox" onChange={() => setChecked(!checked)} defaultChecked={true}/>
-                Show borders
+                <button className={"config_button"} onClick={() => setCorners(!corners)}>
+                  {!corners ? "Fill corners" : "Reset corners"}
+                </button>
               </div>
               <div>
-                <input type="checkbox" id={"cornerCheck"} onChange={() => setCorners(!corners)} defaultChecked={false}/>
-                Fill corners
+                <input type="checkbox" onChange={() => setChecked(!checked)} defaultChecked={true}/>
+                Show borders
               </div>
             </div>
           </div>
@@ -132,23 +140,53 @@ function App() {
                 </li>
             ))}
           </ul>
-          <button onClick={() => handleArray()}>
-            Get array
-          </button>
-          <button onClick={() => handleImage()}>
-            Download PNG
-          </button>
+          <div>
+            <button className={"buttons"} onClick={() => handleArray()}>
+              Get array
+            </button>
+            <button className={"buttons"} onClick={() => handleImage()}>
+              Download PNG
+            </button>
+            <button className={"buttons"} onClick={() => setMaze([])}>
+              Choose maze size
+            </button>
+          </div>
         </div> :
-        <Formik className="size-setter" initialValues={{
-          sizeX: 0,
-          sizeY: 0
-        }} enableReinitialize={true} onSubmit={(values => handleSetter(values))}>
-          <Form>
-            <Field name="sizeY"/>
-            <p>x</p>
-            <Field name="sizeX"/>
-            <button type="submit">Submit</button>
-          </Form>
+        <Formik className="size-setter"
+                initialValues={{
+                  sizeX: "",
+                  sizeY: ""
+                  }}
+                enableReinitialize={true}
+                validateOnChange={false}
+                validateOnBlur={true}
+                validationSchema={schema}
+                onSubmit={(values => handleSetter(values))}>
+          { ({ errors}) => (
+              <Form className={"form"}>
+                <div>
+                  Choose your maze size
+                </div>
+                <div>
+                  <p className={"fields"}>
+                    <Field name="sizeX" placeholder={"Rows"}/>
+                    <div className={"error"}>
+                      {errors.sizeX ?
+                          errors.sizeX : null
+                      }</div>
+                  </p>
+                    <p className={"x"}>x</p>
+                  <p className={"fields"}>
+                    <Field name="sizeY" placeholder={"Columns"}/>
+                    <div className={"error"}>
+                      {errors.sizeY ?
+                        errors.sizeY : null
+                    }</div>
+                  </p>
+                </div>
+                <button className={"buttons"} type="submit">Submit</button>
+              </Form>
+              )}
         </Formik>
       }
     </div>

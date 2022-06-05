@@ -1,0 +1,218 @@
+.App {
+  background-color: rgb(46, 46, 49);
+}
+
+.App .maze-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App .maze-container .maze-config {
+  display: flex;
+  justify-content: center;
+  height: 4vh;
+  padding: 10px;
+}
+
+.App .maze-container .maze-config select {
+  padding: 5px;
+  margin-right: 50px;
+  width: 15vw;
+  text-align: center;
+  font-size: 20px;
+  background-color: rgb(46, 46, 49);
+  color: white;
+  border: 3px solid white;
+  border-radius: 7px;
+}
+
+.config_button {
+  background-color: transparent;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  border: 3px solid white;
+  border-radius: 7px;
+  width: 10vw;
+  padding: 5px;
+}
+
+.config_button:hover {
+  background-color: grey;
+}
+
+.App .maze-container .maze-config div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App .maze-container .maze-config div div {
+  color: white;
+  font-size: 25px;
+  padding: 15px;
+}
+
+.App .maze-container .maze-config div div:first-child {
+  padding-left: 25px;
+}
+
+.App .maze-container .maze {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.App .maze-container .maze li {
+  display: flex;
+  cursor: pointer;
+}
+
+.App .maze-container .maze li:first-child {
+  border-top: 1px solid black;
+}
+
+.App .maze-container .maze li:last-child {
+  border-bottom: 1px solid black;
+}
+
+.App .maze-container .maze li p {
+  display: inline;
+  padding: 20px;
+  font-size: 0;
+}
+
+.App .maze-container .maze li p:first-child {
+  border-left: 1px solid black;
+}
+
+.App .maze-container .maze li p:last-child {
+  border-right: 1px solid black;
+}
+
+.config0 {
+  background-color: black;
+}
+
+.config1 {
+  background-color: white;
+}
+
+.config2 {
+  background-color: orange;
+}
+
+.config3 {
+  background-color: green;
+}
+
+.borderOn:first-child {
+  border-top: 1px solid black;
+}
+
+.borderOff:first-child {
+  border-top: 1px solid transparent;
+}
+
+.borderOn p {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.borderOff p {
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.borderOn p:last-child {
+  border-right: 1px solid transparent;
+}
+
+.borderOff p:last-child {
+  border-right: 1px solid transparent;
+}
+
+.borderOn:last-child p {
+  border-bottom: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.form .fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.form div .error {
+  font-size: 10px;
+  color: red;
+  height: 2vh;
+}
+
+.form div:first-child{
+  font-size: 40px;
+  padding-bottom: 30px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.form div input {
+  padding: 10px;
+  margin: 10px;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  width: 20vw;
+  background-color: transparent;
+  border: 3px solid black;
+  border-radius: 8px;
+}
+
+.form div .x {
+  font-size: 30px;
+  color: white;
+  padding-bottom: 2vh;
+}
+
+.buttons {
+  font-size: 25px;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: transparent;
+  padding: 10px;
+  width: 20vw;
+  border: 3px solid black;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.buttons:hover {
+  border-color: white;
+  color: white;
+}
+
+div .buttons {
+  border-color: white;
+  color: white;
+}
+
+div .buttons:hover {
+  background-color: grey;
+}
+
