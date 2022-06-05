@@ -119,7 +119,7 @@ function App() {
               </div>
               <div>
                 <input type="checkbox" onChange={() => setChecked(!checked)} defaultChecked={true}/>
-                Show borders
+                Show grid
               </div>
             </div>
           </div>
